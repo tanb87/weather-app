@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- CSS Link not used -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/beeIcon.png"/>
+    <title>WeatherBee</title>
+</head>
+
+<body>
+
+    <!-- Start Nav -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">WeatherBee2</a>
+            </div>
+        </nav>
+    </div>
+    <!-- End Nav -->
+
+    <!-- Start Main Content -->
+    <div class="container">
+        <form>
+            <div class="row">
+
+                <!-- Start Search Column -->
+                <div class="col s12">
+                    <label for="user-input" class="form-label">Enter a City or Zip Code:</label>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" id="user-input">
+                    </div>
+                </div>
+            </div>
+            <!-- Additional User Inputs -->
+            <div class="row">
+
+                <!-- Materialize Units of measurement -->
+                <div class="input-field col s6" id="options">
+                    <select id="unit-measurement">
+                        <option value="" disabled >Select One</option>
+                        <option value="imperial" selected>Imperial</option>
+                        <option value="standard">Standard</option>
+                        <option value="metric">Metric</option>
+                    </select>
+                    <label>Unit of measurement:</label>
+                </div>
+
+                <!-- Materialize sunrise-sunset -->
+                <div class="input-field col s6" id="rise-set">
+                    <select id="sunrise-sunset">
+                        <option value="" disabled>Select One</option>
+                        <option value="yes" selected>Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label>Include Sunrise and Sunset?</label>
+                </div>
+
+            </div>
+
+            <div class="row center">
+                <button class="btn waves-effect waves-light" type="submit" name="action" id="user-search">Search
+                    <i class="material-icons right">search</i>
+                </button>
+            </div>
+        </form>
+        <!-- End Search Column -->
+            
+            <!-- Start Display Column -->
+        <div class="row displayWindow">
+            <div class="col s12 m6 l6">
+                <!-- Start Forecast Row -->
+                <div class="row">
+                    <div class="col s6">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h5 class="city-name" id="city-name">City Name</h5> 
+                                </div>
+                            </div>
+                                    <!-- Weather Data Window -->
+                            <!-- Temperature field-->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="temperature-field">Temperature:</p>
+                                </div>
+                            </div>
+                            <!-- Humidity field-->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="humidity-field">Humidity:</p>
+                                </div>
+                            </div>
+                            <!-- Wind Speed field-->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="windspeed-field">Wind Speed: </p>
+                                </div>
+                            </div>
+                            <!-- UV Index field-->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="uvindex-field">UV Index: </p>
+                                </div>
+                            </div>
+                            <!-- Sunrise/Sunset Data -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="sunrise-field"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <p id="sunset-field"></p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col s6 center">
+                        <img src="" alt="" id="weather-icon">
+                        <p class="weather-condition fs-3" id="weather-field"></p>
+                    </div>
+
+                </div>
+                <!-- End Forecast Row -->
+            </div>
+            <!-- Map Window -->
+            <div class="col s12 m6 l6 center">
+                <iframe width="400" height="400" frameborder="0" style="border:0" src="" allowfullscreen id="map"></iframe>
+            </div>
+        </div>
+        <br>
+
+        <div class="row displayWindow">
+            <!-- Start 5-Day Forecast -->
+            <div class="row center">                  
+                 <h5>5-Day Forecast</h5>
+            </div>
+            <!-- Start 5-Day Badges -->
+            <div class="row">
+                <div class="carousel center displayWindow">
+                    <div class="carousel-item blue white-text z-depth-3 fivedaybadge display-window">
+                    </div>
+                    <div class="carousel-item blue white-text z-depth-3 fivedaybadge display-window">
+                    </div>
+                    <div class="carousel-item blue white-text z-depth-3 fivedaybadge display-window">
+                    </div>
+                    <div class="carousel-item blue white-text z-depth-3 fivedaybadge display-window">
+                    </div>
+                    <div class="carousel-item blue white-text z-depth-3 fivedaybadge display-window">
+                    </div>
+                </div>
+            </div>
+            <!-- End 5-Day Badges -->
+            <!-- End 5-Day Forecast -->
+
+            <!-- Start Search History -->
+            <br>
+            <hr>
+        <div class="row displayWindow">
+            <h5 class="center">Search History</h5>
+            <br>
+            <form id="history-field"></form>
+        </div>
+            <!-- End Search History -->
+        </div>
+        <!-- End Display Column -->
+
+        
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Materialize script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- jQuery Links -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- My JS link -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
